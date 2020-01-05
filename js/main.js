@@ -9,10 +9,14 @@ window.onload = () => {
   const pokemonTextThree = document.getElementById('js--pokemon-text-three');
   const pokemonPictureFour = document.getElementById('js--pokemon-picture-four');
   const pokemonTextFour = document.getElementById('js--pokemon-text-four');
+  const beginText = document.getElementById('js--beginText');
 
+  const pokemons = document.getElementsByClassName('js--pokemon');
   const bulbasaur = document.getElementById('js--bulbasaur');
   const charmander = document.getElementById('js--charmander');
   const squirtle = document.getElementById('js--squirtle');
+
+  let starterPokemon = null;
 
   resetPokemon.onmouseenter = (event) => {
     setRandomPokemon();
@@ -21,6 +25,24 @@ window.onload = () => {
   resetPokemon.onmouseleave = (event) => {
     resetPokemon.setAttribute('color', 'blue');
   }
+
+  function addListeners() {
+    for (var i = 0; i < pokemons.length; i++) {
+      console.log(pokemons);
+      pokemons[i].addEventListener('click', function(event) {
+        if (starterPokemon == null) {
+          let thisID = this.id;
+          let thisStripped = thisID.split("--");
+          let starterPokemonlowercase = thisStripped[1].charAt(0).toUpperCase() + thisStripped[1].substring(1);
+          starterPokemon = starterPokemonlowercase;
+          beginText.setAttribute('value', 'Your starter Pokemon is ' + starterPokemon + '!');
+          console.log("Your starter Pokemon is " + starterPokemon + "!");
+        }
+      });
+    }
+  }
+
+  addListeners();
 
   // Get the random pokemon from the API
 
