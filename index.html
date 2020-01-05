@@ -11,7 +11,7 @@
 </head>
 <body>
   <a-scene>
-    <a-camera position="0 3 0">
+    <a-camera id="js--camera" position="0 3 0">
       <a-entity
         animation__click="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
         animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
@@ -26,10 +26,6 @@
 
     <a-plane rotation="-90 0 0" height="1000" width="1000" color="#6B9B1E"></a-plane>
 
-    <a-box id="js--box" color="blue" position="0 1 -5" width="3" visible="false">
-      <a-text value="Look here to begin" position="-1 0 0.5"></a-text>
-    </a-box>
-
     <a-entity id="beginnerPokemon" position="0 2 -3">
       <a-text id="js--beginText" value="Choose your starter Pokemon by looking at them and start your adventure!" position="0 0.75 0" align="center"></a-text>
       <a-image id="js--bulbasaur" class="js--pokemon clickable" position="-1 0 0" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"  visible="true"></a-image>
@@ -37,23 +33,23 @@
       <a-image id="js--squirtle" class="js--pokemon clickable" position="1 0 0" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"  visible="true"></a-image>
     </a-entity>
 
-    <!-- <a-entity id="randomPokemons">
-      <a-image id="js--pokemon-picture-one" position="0 2 -3" src="img/pokemon-logo.png">
-        <a-text id="js--pokemon-text-one" color="white" position="-0.4 1 0" value="pokemon-name"></a-text>
+    <a-entity id="randomPokemons">
+      <a-image class="js--wildPokemon clickable" id="js--pokemon-picture-one" position="1 2 -54" src="img/pokemon-logo.png" visible="false">
+        <a-text id="js--pokemon-text-one" color="white" position="-0.4 0.5 0" value="pokemon-name"></a-text>
       </a-image>
 
-      <a-image id="js--pokemon-picture-two" position="2 2 -3" src="img/pokemon-logo.png">
-        <a-text id="js--pokemon-text-two" color="white" position="-0.4 1 0" value="pokemon-name"></a-text>
+      <a-image class="js--wildPokemon clickable" id="js--pokemon-picture-two" position="3 2 -54" src="img/pokemon-logo.png" visible="false">
+        <a-text id="js--pokemon-text-two" color="white" position="-0.4 0.5 0" value="pokemon-name"></a-text>
       </a-image>
 
-      <a-image id="js--pokemon-picture-three" position="-2 2 -3" src="img/pokemon-logo.png">
-        <a-text id="js--pokemon-text-three" color="white" position="-0.4 1 0" value="pokemon-name"></a-text>
+      <a-image class="js--wildPokemon clickable" id="js--pokemon-picture-three" position="-1 2 -54" src="img/pokemon-logo.png" visible="false">
+        <a-text id="js--pokemon-text-three" color="white" position="-0.4 0.5 0" value="pokemon-name"></a-text>
       </a-image>
 
-      <a-image id="js--pokemon-picture-four" position="-4 2 -3" src="img/pokemon-logo.png">
-        <a-text id="js--pokemon-text-four" color="white" position="-0.4 1 0" value="pokemon-name"></a-text>
+      <a-image class="js--wildPokemon clickable" id="js--pokemon-picture-four" position="-3 2 -54" src="img/pokemon-logo.png" visible="false">
+        <a-text id="js--pokemon-text-four" color="white" position="-0.4 0.5 0" value="pokemon-name"></a-text>
       </a-image>
-    </a-entity> -->
+    </a-entity>
 
     <a-sky color="lightblue"></a-sky>
 

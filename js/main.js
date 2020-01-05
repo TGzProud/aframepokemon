@@ -1,6 +1,11 @@
 window.onload = () => {
+  const camera = document.getElementById('js--camera');
 
-  const resetPokemon = document.getElementById('js--box');
+  const pokemons = document.getElementsByClassName('js--pokemon');
+  const bulbasaur = document.getElementById('js--bulbasaur');
+  const charmander = document.getElementById('js--charmander');
+  const squirtle = document.getElementById('js--squirtle');
+
   const pokemonPictureOne = document.getElementById('js--pokemon-picture-one');
   const pokemonTextOne = document.getElementById('js--pokemon-text-one');
   const pokemonPictureTwo = document.getElementById('js--pokemon-picture-two');
@@ -10,30 +15,18 @@ window.onload = () => {
   const pokemonPictureFour = document.getElementById('js--pokemon-picture-four');
   const pokemonTextFour = document.getElementById('js--pokemon-text-four');
   const beginText = document.getElementById('js--beginText');
-
-  const pokemons = document.getElementsByClassName('js--pokemon');
-  const bulbasaur = document.getElementById('js--bulbasaur');
-  const charmander = document.getElementById('js--charmander');
-  const squirtle = document.getElementById('js--squirtle');
+  const wildPokemons = document.getElementsByClassName('js--wildPokemon');
 
   let starterPokemon = null;
-
-  resetPokemon.onmouseenter = (event) => {
-    setRandomPokemon();
-  }
-
-  resetPokemon.onmouseleave = (event) => {
-    resetPokemon.setAttribute('color', 'blue');
-  }
+  let starterPokemonlowercase = null;
 
   function addListeners() {
     for (var i = 0; i < pokemons.length; i++) {
-      console.log(pokemons);
       pokemons[i].addEventListener('click', function(event) {
         if (starterPokemon == null) {
           let thisID = this.id;
           let thisStripped = thisID.split("--");
-          let starterPokemonlowercase = thisStripped[1].charAt(0).toUpperCase() + thisStripped[1].substring(1);
+          starterPokemonlowercase = thisStripped[1].charAt(0).toUpperCase() + thisStripped[1].substring(1);
           starterPokemon = starterPokemonlowercase;
           beginText.setAttribute('value', 'Your starter Pokemon is ' + starterPokemon + '!');
           removeOtherStarters();
@@ -55,6 +48,27 @@ window.onload = () => {
       charmander.setAttribute('visible', 'false');
       squirtle.setAttribute('position', '0 0 0');
     }
+
+    moveLocation();
+  }
+
+  function moveLocation() {
+    setTimeout(function () {
+      let att = document.createAttribute('animation');
+      att.value = 'property: position; easing: linear; dur: 5000; to: 0 3 -50';
+      camera.setAttribute('animation', att.value);
+    }, 2000);
+
+    setTimeout(function () {
+      beginText.setAttribute('visible', 'false');
+      bulbasaur.setAttribute('visible', 'false');
+      charmander.setAttribute('visible', 'false');
+      squirtle.setAttribute('visible', 'false');
+    }, 3000);
+
+    setTimeout(function () {
+      setRandomPokemon();
+    }, 4000);
   }
 
   addListeners();
@@ -70,7 +84,7 @@ window.onload = () => {
     getPokemonTwo(randomPokemonNumberTwo);
     getPokemonThree(randomPokemonNumberThree);
     getPokemonFour(randomPokemonNumberFour);
-    resetPokemon.setAttribute('color', 'red');
+    startBattle();
   }
 
   const getPokemon = (numberOfPokemon) => {
@@ -81,12 +95,12 @@ window.onload = () => {
     })
     .then( (response) => {
       pokemonPictureOne.setAttribute('src', response.sprites.front_default);
+      pokemonPictureOne.setAttribute('visible', 'true');
       pokemonTextOne.setAttribute('value', response.name);
     });
   }
 
   const getPokemonTwo = (numberOfPokemon) => {
-    console.log(numberOfPokemon);
     const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
     fetch(BASE_URL + numberOfPokemon)
     .then( (data) => {
@@ -94,6 +108,7 @@ window.onload = () => {
     })
     .then( (response) => {
       pokemonPictureTwo.setAttribute('src', response.sprites.front_default);
+      pokemonPictureTwo.setAttribute('visible', 'true');
       pokemonTextTwo.setAttribute('value', response.name);
     });
   }
@@ -106,6 +121,7 @@ window.onload = () => {
     })
     .then( (response) => {
       pokemonPictureThree.setAttribute('src', response.sprites.front_default);
+      pokemonPictureThree.setAttribute('visible', 'true');
       pokemonTextThree.setAttribute('value', response.name);
     });
   }
@@ -118,8 +134,18 @@ window.onload = () => {
     })
     .then( (response) => {
       pokemonPictureFour.setAttribute('src', response.sprites.front_default);
+      pokemonPictureFour.setAttribute('visible', 'true');
       pokemonTextFour.setAttribute('value', response.name);
     });
+  }
+
+  function startBattle() {
+    for (var i = 0; i < wildPokemons.length; i++) {
+      wildPokemons[i].addEventListener('click', function(event) {
+        console.log(this.id);
+
+      })
+    }
   }
 
 }
