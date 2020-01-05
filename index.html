@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="js/main.js"></script>
+  <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+  <title>Pokemon</title>
+</head>
+<body>
+  <a-scene>
+    <a-camera>
+      <a-cursor color="black"></a-cursor>
+    </a-camera>
+
+    <a-plane rotation="-90 0 0" height="100" width="100" color="#6B9B1E"></a-plane>
+
+    <a-box id="js--box" color="blue" position="0 0 -3"></a-box>
+
+    <a-image id="js--pokemon-picture-one" position="0 2 -3" src="img/pokemon-logo.png">
+      <a-text id="js--pokemon-text-one" color="white" position="-0.4 1 0" value="pokemon-name"></a-text>
+    </a-image>
+
+
+    <a-image id="js--pokemon-picture-two" position="2 2 -3" src="img/pokemon-logo.png">
+      <a-text id="js--pokemon-text-two" color="white" position="-0.4 1 0" value="pokemon-name"></a-text>
+    </a-image>
+
+    <a-image id="js--pokemon-picture-three" position="-2 2 -3" src="img/pokemon-logo.png">
+      <a-text id="js--pokemon-text-three" color="white" position="-0.4 1 0" value="pokemon-name"></a-text>
+    </a-image>
+
+    <a-sky color="lightblue"></a-sky>
+
+    <!-- <a-entity environment="preset: tron"></a-entity> -->
+  </a-scene>
+</body>
+</html>
