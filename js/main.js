@@ -36,9 +36,24 @@ window.onload = () => {
           let starterPokemonlowercase = thisStripped[1].charAt(0).toUpperCase() + thisStripped[1].substring(1);
           starterPokemon = starterPokemonlowercase;
           beginText.setAttribute('value', 'Your starter Pokemon is ' + starterPokemon + '!');
-          console.log("Your starter Pokemon is " + starterPokemon + "!");
+          removeOtherStarters();
         }
       });
+    }
+  }
+
+  function removeOtherStarters() {
+    if (starterPokemon == "Bulbasaur") {
+      charmander.setAttribute('visible', 'false');
+      squirtle.setAttribute('visible', 'false');
+      bulbasaur.setAttribute('position', '0 0 0');
+    } else if (starterPokemon == "Charmander") {
+      bulbasaur.setAttribute('visible', 'false');
+      squirtle.setAttribute('visible', 'false');
+    } else if (starterPokemon == "Squirtle") {
+      bulbasaur.setAttribute('visible', 'false');
+      charmander.setAttribute('visible', 'false');
+      squirtle.setAttribute('position', '0 0 0');
     }
   }
 
