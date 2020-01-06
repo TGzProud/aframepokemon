@@ -94,7 +94,7 @@ window.onload = () => {
       return data.json();
     })
     .then( (response) => {
-      pokemonPictureOne.setAttribute('src', response.sprites.front_default);
+      pokemonPictureOne.setAttribute('src', response.sprites.front_shiny);
       pokemonPictureOne.setAttribute('visible', 'true');
       pokemonTextOne.setAttribute('value', response.name);
     });
